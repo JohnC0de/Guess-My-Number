@@ -1,6 +1,7 @@
 let wonGame = false;
 let lostGame = false;
 let hiddenRandomNumber;
+let highscore
 let tries = 0;
 let hearts = 5;
 const displayedRandomNumber = document.querySelector("#displayedRandomNumber");
@@ -19,9 +20,7 @@ function generateRandomNumber() {
 
 function rightAnswer() {
   displayedRandomNumber.textContent = hiddenRandomNumber;
-  tries == 1
-    ? (displayedHighscore.textContent = `Highscore: ${tries} Try`)
-    : (displayedHighscore.textContent = `Highscore: ${tries} Tries`);
+  if (highscore > tries) tries == 1 ? (displayedHighscore.textContent = `Highscore: ${tries} Try`) : (displayedHighscore.textContent = `Highscore: ${tries} Tries`);
   wonGame = 1;
 }
 
@@ -49,7 +48,7 @@ function resetGame() {
   gameOver.style.display = "none";
   tryAgain.style.display = "none";
   outputMessage.style.display = "block";
-  outputMessage.textContent = "Choose a number!";
+  outputMessage.textContent = "🔮 Choose a number! 🚀";
   displayedRandomNumber.textContent = "?";
   inputValue.placeholder = "Ex:15";
   console.log("resetted", wonGame, lostGame);
@@ -87,7 +86,7 @@ function getAnswer() {
       }
     } else
       outputMessage.textContent =
-        "❗️ Please, insert only numbers between 1 and 20!";
+        "❗️ Please, insert only numbers between 1 and 20! 📌";
   }
 }
 
