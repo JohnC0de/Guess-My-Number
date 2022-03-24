@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer utilities {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+}
