@@ -1,4 +1,3 @@
-import './style.css'
 let wonGame = false;
 let lostGame = false;
 let hiddenRandomNumber;
