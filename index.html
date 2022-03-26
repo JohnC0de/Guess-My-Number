@@ -10,18 +10,21 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-
 <body>
-  <!-- bg-[#c2e7ff] -->
-  <div class="flex items-center justify-center h-screen bg-cover bg-origin-content bg-[url(/background.svg)]">
-    <!-- 280 px base -->
+  <!-- The first div is an svg as background of the page. -->
+  <div
+    class="flex items-center overflow-hidden justify-center h-screen bg-cover bg-origin-content bg-[url(/background.svg)]">
+    <!-- The second div is the mini game container. -->
     <div
       class="flex flex-col pb-10 pt-8 px-5 rounded-2xl items-center border-2 border-[#00000052] bg-[#0089D1] space-y-12 w-[350px] shadow-[4px_4px_30px_2px_rgba(0,0,0,0.5),inset_2px_3px_20px_2px_rgba(0,0,0,0.2)]">
-      <!-- Font game over ['Press_Start_2P'] -->
+      <!-- This div has the first half of the minigame, containing the screen -->
       <div
         class="flex flex-col space-y-4 border-4 border-[#00000052] pt-4 pb-6 px-4 rounded-2xl w-[90%] text-center bg-[rgba(91,197,157,0.62)] font-['Press_Start_2P'] shadow-[inset_4px_4px_50px_2px_rgba(0,0,0,0.3),0px_0px_20px_5px_rgba(0,0,0,0.1)]">
-        <p class="text-[20px] mb-2 font-['Press_Start_2P'] [text-shadow:0_4px_8px_rgba(0,0,0,0.32)]">Guess My Number!
+        <!-- Title of the game -->
+        <p class="text-[20px] mb-2 font-['Press_Start_2P'] [text-shadow:0_4px_8px_rgba(0,0,0,0.32)]">
+          Guess My Number!
         </p>
+        <!-- All hearts are svg's inside this div -->
         <div class="flex justify-center">
           <svg id="heart1" xmlns="http://www.w3.org/2000/svg" fill="#FF1929" viewBox="0 0 24 24" stroke="currentColor"
             stroke-width="2" width="24" height="24">
@@ -49,29 +52,28 @@
               d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
           </svg>
         </div>
+        <!-- Random number displayed at center of the screen when you win the game (default ?) -->
         <p id="displayedRandomNumber"
           class="self-center w-[80px] h-[80px] flex items-center justify-center text-2xl font-bold border-2 rounded-3xl border-black bg-slate-200">
           ?</p>
+        <!-- Input field and check button -->
         <div class="flex justify-around">
           <div>
             <input id="inputValue" placeholder="1-20"
-              class="bg-slate-200 text-xl w-[78%] border-2 px-2 py-1 hover:transition-colors hover:ease-out hover:duration-300 focus:placeholder-purple-700 border-black hover:border-white hover:bg-purple-700 hover:text-white hover:placeholder-purple-700 focus:text-white focus:border-white focus:bg-purple-700 shadow-lg rounded-xl outline-none  text-center"
+              class="bg-slate-200 text-xl w-[78%] border-2 px-2 py-1 hover:transition-colors hover:ease-out hover:duration-300 focus:placeholder-purple-700 border-black hover:border-white hover:bg-purple-700 hover:text-white hover:placeholder-purple-700 focus:text-white focus:border-white focus:bg-purple-700 shadow-lg rounded-xl outline-none text-center"
               type="number" />
           </div>
-          <!-- px-3 -->
           <div>
             <button id="inputButton"
               class="px-2 py-1 text-lg border-2 border-black shadow-2xl outline-none bg-slate-200 hover:transition-colors hover:ease-out hover:duration-300 hover:bg-purple-700 hover:text-white hover:border-white rounded-xl">Check</button>
           </div>
         </div>
       </div>
-      <!-- azul claro bg-[#c4ddff] -->
-      <!-- bg-[#B30915] -->
+      <!-- This div has the second half of the minigame, containing all display messages and all buttons -->
       <div
         class="flex flex-col pb-5 p-4 font-semibold border-x-[1px] border-t-[1px] border-[#1883c2] bg-[#c4ddff36] rounded-t-3xl w-[100%] shadow-inner">
         <div
           class="flex flex-col h-[173px] space-y-4 border-2 rounded-2xl p-2 border-[#00000052] bg-[rgba(91,197,157,0.62)] shadow-[inset_4px_4px_50px_2px_rgba(0,0,0,0.3)]">
-          <!-- Test text-center on bubble notification -->
           <div id="outputMessage"
             class="mt-auto px-3 py-1 ml-auto border-2 border-black bg-slate-200 rounded-l-2xl rounded-t-2xl">
             <p>🔮 Choose a number! 🚀</p>
@@ -85,18 +87,20 @@
             <p>🎉 You did it! ✨</p>
           </div>
           <button id="tryAgain"
-            class="mt-auto hidden font-semibold px-3 py-1 ml-auto border-2 border-black bg-slate-200 rounded-l-2xl rounded-t-2xl hover:bg-[#21aa5a] hover:text-white">⚔
-            Try again?
-            ⚔</button>
+            class="mt-auto hidden font-semibold px-3 py-1 ml-auto border-2 border-black bg-slate-200 rounded-l-2xl rounded-t-2xl hover:bg-[#21aa5a] hover:text-white">
+            ⚔ Try again? ⚔
+          </button>
           <div
             class="mt-auto flex justify-center px-3 py-1 mr-auto space-x-2 border-2 border-black rounded-r-2xl rounded-t-2xl bg-slate-200">
             <p id="tries">Tries: 0</p>
             <p id="highscore">Highscore: 0 Tries</p>
           </div>
         </div>
+        <!-- All buttons made only with css -->
         <div class="flex justify-between mt-6">
           <div class="w-[50%] space-y-1">
-            <div class="flex justify-center rounded-t-lg"><button
+            <div class="flex justify-center rounded-t-lg">
+              <button
                 class="border shadow-xl border-r-yellow-500/80 bg-yellow-400 ring-4 w-[28px] h-[28px] rounded-t-lg hover:opacity-80"></button>
             </div>
             <div class="flex justify-around">
@@ -105,7 +109,8 @@
               <button
                 class="border shadow-xl border-r-yellow-500/80 bg-yellow-400 ring-4 w-[28px] h-[28px] hover:opacity-80 rounded-r-lg"></button>
             </div>
-            <div class="flex justify-center"><button
+            <div class="flex justify-center">
+              <button
                 class="border shadow-xl border-r-yellow-500/80 bg-yellow-400 ring-4 w-[28px] h-[28px] hover:opacity-80 rounded-b-lg"></button>
             </div>
           </div>
@@ -123,6 +128,7 @@
       </div>
     </div>
   </div>
+
   <script type="module" src="/main.js"></script>
 </body>
 
